@@ -23,7 +23,7 @@ public class RideController {
 		return rideService.getRides();
 	}
 	
-	@RequestMapping(value = "/rides", method = RequestMethod.PUT)
+	@RequestMapping(value = "/rides", method = RequestMethod.POST)
 	public @ResponseBody Ride createRide(@RequestBody Ride ride) {
 		return rideService.createRide(ride);
 	}

@@ -25,14 +25,14 @@ public class RestControllerTest {
 	@Test(timeout=3000)
 	public void testGetRides() {
 
-		List<Ride> rides = this.exchangeAsList("http://localhost:8080/ride_tracker/rides", new ParameterizedTypeReference<List<Ride>>() {});
+		// List<Ride> rides = this.exchangeAsList("http://localhost:8080/ride_tracker/rides", new ParameterizedTypeReference<List<Ride>>() {});
 
 
-		// ResponseEntity<List<Ride>> ridesResponse = restTemplate.exchange(
-		// 		"http://localhost:8080/ride_tracker/rides", HttpMethod.GET,
-		// 		null, new ParameterizedTypeReference<List<Ride>>() {
-		// 		});
-		// List<Ride> rides = ridesResponse.getBody();
+		ResponseEntity<List<Ride>> ridesResponse = restTemplate.exchange(
+				"http://localhost:8080/ride_tracker/rides", HttpMethod.GET,
+				null, new ParameterizedTypeReference<List<Ride>>() {
+				});
+		List<Ride> rides = ridesResponse.getBody();
 
 		for (Ride ride : rides) {
 			System.out.println("Ride name: " + ride.getName());
@@ -42,10 +42,10 @@ public class RestControllerTest {
 	@Test(timeout=3000)
 	public void testCreateRide() {
 		Ride ride = new Ride();
-		ride.setName("Bike");
-		ride.setDuration(120);
+		ride.setName("Jumb");
+		ride.setDuration(10);
 
-		restTemplate.put("http://localhost:8080/ride_tracker/rides",ride);
-
+		ride = restTemplate.postForObject("http://localhost:8080/ride_tracker/rides",ride, Ride.class);
+		System.out.println("Ride : " + ride);
 	}
 }
