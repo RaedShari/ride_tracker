@@ -13,6 +13,8 @@
 			<param-value>
 				/WEB-INF/config/servlet-config.xml
 				classpath:jdbc-config.xml
+								<!-- <classpath:SpringJdbcConfig class="java"></classpath:SpringJdbcConfig> -->
+
 			</param-value>
 		</init-param>
 	</servlet>

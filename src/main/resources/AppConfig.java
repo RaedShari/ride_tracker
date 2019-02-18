@@ -1,0 +1,7 @@
+/**
+ * AppConfig
+ */
+public class AppConfig {
+
+    
+}
